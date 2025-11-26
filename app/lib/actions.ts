@@ -51,7 +51,9 @@ export async function authenticate(
 ): Promise<string> {
   try {
     await signIn('credentials', formData);
-    return 'Success';
+
+    // ✅ Redirect to dashboard after successful login
+    redirect('/dashboard');
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
